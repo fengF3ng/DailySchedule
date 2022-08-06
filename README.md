@@ -43,3 +43,7 @@
 
 ## 2022-7-22~2022-7-28
 
+实验4遇到的问题
+
+1. 在fstat函数中current_user_token会要求task的使用权，如果先在fstat中申请了current_task的inner_exclusive_access则导致同一时间内task被两次借用。
+2. 搜索目录下所有文件的时候错误的调用了当前fd的inode的read_disk_inode导致没有正确搜索所有文件，应该对ROOT_INODE使用read_disk_inode得到所有文件id。
